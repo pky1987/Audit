@@ -14,3 +14,6 @@ rm -rf PRust/.git
 ```
 git push -u origin main --force
 ```
+```
+git config --global user.email
+```

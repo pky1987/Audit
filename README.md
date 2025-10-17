@@ -11,3 +11,6 @@ bb write_solidity_verifier -k ./target/vk -o ./target/Verifier.sol
 ```
 rm -rf PRust/.git
 ```
+```
+git push -u origin main --force
+```

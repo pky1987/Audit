@@ -1,0 +1,120 @@
+---
+title: "LayerZero: Starknet Endpoint Audit Report"
+author: Prakash Yadav
+date: October 27, 2025
+header-includes:
+  - \usepackage{titling}
+  - \usepackage{graphicx}
+  - \usepackage{colortbl}
+  - \usepackage{float}
+---
+
+\begin{titlepage}
+    \centering
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{starknet.png} 
+    \end{figure}
+    \vspace*{2cm}
+    {\Huge\bfseries LayerZero: Starknet Endpoint Audit Report\par}
+    {\Large\itshape LayerZero x Starknet integration\par}
+    \vspace{1cm}
+    {\Large Version 1.0\par}
+    \vspace{2cm}
+    {\Large\itshape Prakash Yadav\par}
+    \vfill
+    {\large \today\par}
+\end{titlepage}
+
+\maketitle
+
+<!-- Your report starts here! -->
+
+Prepared by: [Prakash Yadav](https://portfolio-drab-tau-34.vercel.app/)
+Lead Auditors: 
+- Prakash Yadav
+
+# Table of Contents
+- [Table of Contents](#table-of-contents)
+- [Protocol Summary](#protocol-summary)
+- [Disclaimer](#disclaimer)
+- [Risk Classification](#risk-classification)
+- [Audit Details](#audit-details)
+  - [Scope](#scope)
+  - [Roles](#roles)
+- [Executive Summary](#executive-summary)
+  - [Issues found](#issues-found)
+- [Findings](#findings)
+- [High](#high)
+- [Medium](#medium)
+- [Low](#low)
+- [Informational](#informational)
+- [Gas](#gas)
+
+# Protocol Summary
+
+The LayerZero V2-Starknet implementation maintains the same core architecture and functionality as LayerZero V2-EVM while adapting to Starknet's unique features and constraints. The protocol preserves LayerZero's core values of permissionlessness, immutability and censorship-resistance. The audit covers the security aspects of the Solidity codebase for vulnerabilities, flaws, or inefficiencies.
+
+# Disclaimer
+
+This audit is an effort to identify vulnerabilities in the codebase and assess the security of the bridge protocol within a time-constrained audit period. However, the findings presented herein should not be considered an endorsement of the underlying business or protocol. This audit only focuses on the security aspects of the contract code and is not a full business, legal, or regulatory review.
+
+# Risk Classification
+
+
+
+# Audit Details
+
+## Scope
+The following file-paths and all files within them are in-scope:
+
+| Path |
+| -- |
+| [layerzero/src/endpoint/\*\*.\*\*](https://github.com/code-423n4/2025-10-layerzero/tree/main/layerzero/src/endpoint) |
+| [layerzero/src/message_lib/uln_302/\*\*.\*\*](https://github.com/code-423n4/2025-10-layerzero/tree/main/layerzero/src/message_lib/uln_302) |
+| [layerzero/src/workers/dvn/\*\*.\*\*](https://github.com/code-423n4/2025-10-layerzero/tree/main/layerzero/src/workers/dvn) |
+| [libs/multisig/src/\*\*.\*\*](https://github.com/code-423n4/2025-10-layerzero/tree/main/libs/multisig/src) |
+| [libs/enumerable_set/src/\*\*.\*\*](https://github.com/code-423n4/2025-10-layerzero/tree/main/libs/enumerable_set/src) |
+
+## Roles
+
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Role}           & \textbf{Name}        \\ \hline
+Lead Auditor                                     & Prakash Yadav        \\ \hline
+Auditor                                          & Prakash Yadav       \\ \hline
+Codebase Reviewer                                & Prakash Yadav       \\ \hline
+\end{tabular}
+
+# Executive Summary
+
+The audit of the LayerZero: Starknet Endpoint revealed a total of **5 issues** across different severity levels. The most critical issue found was a high-severity vulnerability related to reentrancy in the contract's transfer function.
+
+## Issues Found
+
+\begin{table}[H]
+\centering{%
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Category}   & \textbf{Number of Issues} \\ \hline
+\textbf{High}                             & 3                         \\ \hline
+\textbf{Medium}                           & 2                         \\ \hline
+\textbf{Low}                              & 0                         \\ \hline
+\textbf{Informational}                    & 0                         \\ \hline
+\textbf{Gas Optimization}                 & 0                         \\ \hline
+\textbf{Total}                             & 5                         \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+# Findings
+# High
+# Medium
+# Low 
+# Informational
+# Gas 
+# Conclusion
+
+This audit identifies several areas for improvement, with one high-severity vulnerability that requires immediate attention. After addressing the critical issues, the Boss Bridge protocol will be more secure and gas-efficient. Further recommendations related to best practices in smart contract development and performance optimization have been provided.
+
+\textbf{End of Report}

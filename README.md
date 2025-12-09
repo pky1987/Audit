@@ -17,3 +17,35 @@ git push -u origin main --force
 ```
 git config --global user.email
 ```
+# Remove deleted file history from Github
+
+1. Select files which need to be deleted.
+
+```
+git filter-repo --invert-paths --path DEVELOPER_QUICK_REFERENCE.md --path FEATURE_ROADMAP.md --path PHASE_1_2_3_COMPLETION.md --path PHASE_2_COMPLETION.md --path PROJECT_STATUS.md
+```
+2. Fresh Clone Required
+
+git-filter-repo refuses to run on non-fresh clones. Clone to a new directory first.
+
+```
+git clone https://github.com/pky1987/PChat.git fresh-clone
+cd fresh-clone
+
+```
+
+3. Run History Rewrite
+
+Use git-filter-repo with --sensitive-data-removal flag for extra safety.
+
+```
+git filter-repo --sensitive-data-removal --invert-paths --path DEVELOPER_QUICK_REFERENCE.md --path FEATURE_ROADMAP.md --path PHASE_1_2_3_COMPLETION.md --path PHASE_2_COMPLETION.md --path PROJECT_STATUS.md
+```
+
+4. Force Push All Refs
+
+Overwrite remote history completely.
+
+```
+git push --force --mirror origin
+```

@@ -53,3 +53,9 @@ git push --force --mirror origin
 <div align="center" style="margin: 80px 0;">
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="800">
 </div>
+
+5.n8n
+
+```
+docker run -it --rm -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n:nightly
+```

@@ -59,3 +59,8 @@ git push --force --mirror origin
 ```
 docker run -it --rm -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n:nightly
 ```
+6. Testing Indiviudal function of test file.
+
+```
+cd otp && mix test test/otp/abuse/detector_test.exs --only "test abuse response actions logs abuse incidents"
+```

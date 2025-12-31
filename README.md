@@ -64,3 +64,12 @@ docker run -it --rm -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio
 ```
 cd otp && mix test test/otp/abuse/detector_test.exs --only "test abuse response actions logs abuse incidents"
 ```
+
+7. POST code
+
+```
+curl -i -X POST http://localhost:4000/api/delivery-report \
+  -H "Content-Type: application/json" \
+  -d '{"provider_message_id":"abc123","status":"delivered","delivered_at":"2025-12-31T12:00:00Z"}'
+
+```

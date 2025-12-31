@@ -73,3 +73,28 @@ curl -i -X POST http://localhost:4000/api/delivery-report \
   -d '{"provider_message_id":"abc123","status":"delivered","delivered_at":"2025-12-31T12:00:00Z"}'
 
 ```
+
+8. Creating and Generating API Key
+
+### Export OTP 
+
+```
+export OTP_ADMIN_TOKEN="abcdefm"
+
+```
+### Check whether if it exists or not.
+
+```
+echo $OTP_ADMIN_TOKEN
+
+```
+### Post Code
+
+```
+curl -i -X POST http://localhost:4000/api/admin/api_keys \
+  -H "x-admin-token: Prakash-Yadav-03" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Prakash"}'
+
+
+```

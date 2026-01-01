@@ -98,3 +98,14 @@ curl -i -X POST http://localhost:4000/api/admin/api_keys \
 
 
 ```
+
+# Python Virtual Environment
+1. Create virtual environment:
+```
+python3 -m venv venv
+```
+2. Activate virtual environment:
+```
+source venv/bin/activate
+
+```

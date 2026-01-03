@@ -99,6 +99,10 @@ curl -i -X POST http://localhost:4000/api/admin/api_keys \
 
 ```
 
+```
+curl -s "http://localhost:5000/api/cameras" -H "Origin: http://localhost:5175" | head -20
+```
+
 # Python Virtual Environment
 1. Create virtual environment:
 ```

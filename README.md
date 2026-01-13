@@ -113,3 +113,7 @@ python3 -m venv venv
 source venv/bin/activate
 
 ```
+
+```
+find 29112025/Airis/smart_surveillance -name "*.py" -not -path "*/venv/*" -exec grep -l "cv2\.rectangle\|draw.*box\|bounding.*box" {} \;
+```

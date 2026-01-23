@@ -3,6 +3,10 @@ pandoc report-example.md -o report.pdf --from markdown --template=eisvogel --lis
 
 ```
 ```
+pandoc README.md -o Miniclip.pdf   --from markdown   --template=eisvogel   
+--listings   --pdf-engine=xelatex
+```
+```
 bb write_vk --oracle_hash keccak -b ./target/circuits.json -o ./target
 ```
 ```

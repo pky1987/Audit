@@ -121,3 +121,7 @@ source venv/bin/activate
 ```
 find 29112025/Airis/smart_surveillance -name "*.py" -not -path "*/venv/*" -exec grep -l "cv2\.rectangle\|draw.*box\|bounding.*box" {} \;
 ```
+
+```
+grep -n "def " lib/elx/real_time_translation.ex
+```

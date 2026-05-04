@@ -123,5 +123,7 @@ find 29112025/Airis/smart_surveillance -name "*.py" -not -path "*/venv/*" -exec 
 ```
 
 ```
+https://script.google.com/macros/s/AKfycbytSTMKzq7cywvrgphbLUwQ50C1QkWfaMf_1FtbcY_js7Ku8d1-XZXNriIHF_D4_4CG/exec
+```
 grep -n "def " lib/elx/real_time_translation.ex
 ```

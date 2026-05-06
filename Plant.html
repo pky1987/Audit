@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Wishlist</title>
+  <!-- Font Awesome for icons (no external dependency needed at runtime) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --accent: #1565c0;
+      --success: #2e7d32;
+      --danger: #c62828;
+      --gray-light: #f5f5f5;
+      --gray: #e0e0e0;
+      --white: #fff;
+      --text: #333;
+      --shadow: 0 8px 30px rgba(0,0,0,0.08);
+      --radius: 12px;
+      --transition: 0.2s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px 35px;
+      margin-bottom: 25px;
+      transition: transform var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--gray-light);
+      padding-bottom: 15px;
+    }
+
+    .card-header i {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .card-header h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .form-section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 25px 0 15px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .form-section-title i {
+      font-size: 1rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+    }
+
+    @media (max-width: 700px) {
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        padding: 20px;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 5px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--gray);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: all var(--transition);
+      background: #fafafa;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46,125,50,0.2);
+      background: var(--white);
+    }
+
+    .readonly-field {
+      background-color: #f1f8e9 !important;
+      color: #2e7d32 !important;
+      font-weight: 500;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-accent:hover {
+      background: #0d47a1;
+    }
+
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .autofill-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .autofill-row input {
+      flex: 1;
+    }
+
+    .image-preview-container {
+      margin-top: 8px;
+      text-align: center;
+      background: var(--gray-light);
+      border-radius: 6px;
+      padding: 10px;
+      height: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .image-preview-container img {
+      max-height: 140px;
+      max-width: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .no-image {
+      color: #999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      min-width: 280px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 500;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: slideIn 0.3s ease;
+    }
+
+    .toast-success { background: var(--success); }
+    .toast-error { background: var(--danger); }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .required-mark {
+      color: var(--danger);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-seedling"></i>
+        <h2>Plant Wishlist</h2>
+      </div>
+
+      <!-- Auto IDs (read-only) -->
+      <div class="grid-2">
+        <div class="form-group">
+          <label><i class="fas fa-hashtag"></i> Sr. No.</label>
+          <input type="text" id="srNo" class="readonly-field" readonly>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-fingerprint"></i> ID</label>
+          <input type="text" id="plantId" class="readonly-field" readonly>
+        </div>
+      </div>
+
+      <!-- Common Name + AI Autofill -->
+      <div class="form-group" style="margin-top:20px;">
+        <label for="commonName">
+          <i class="fas fa-leaf"></i> Plant Common Name <span class="required-mark">*</span>
+        </label>
+        <div class="autofill-row">
+          <input type="text" id="commonName" placeholder="e.g., Tulsi, Rose, Monstera..." required>
+          <button id="fillBtn" class="btn btn-accent" onclick="fillWithAI()">
+            <i class="fas fa-magic"></i> Autofill with AI
+          </button>
+        </div>
+      </div>
+
+      <!-- Image preview -->
+      <div class="form-group">
+        <label><i class="fas fa-image"></i> Image URL</label>
+        <input type="url" id="imageUrl" placeholder="https://images.unsplash.com/photo-...">
+        <div class="image-preview-container" id="imagePreviewContainer">
+          <div class="no-image" id="noImagePlaceholder">
+            <i class="fas fa-camera" style="font-size:2rem;"></i>
+            <span>No image yet</span>
+          </div>
+          <img id="imagePreview" style="display:none;" alt="Plant preview">
+        </div>
+      </div>
+    </div>
+
+    <!-- Basic Details Card -->
+    <div class="card">
+      <div class="form-section-title">
+        <i class="fas fa-info-circle"></i> Basic Details
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Scientific Name</label>
+          <input type="text" id="scientificName" placeholder="Genus species">
+        </div>
+        <div class="form-group">
+          <label>Variety</label>
+          <input type="text" id="variety" placeholder="e.g., Mammoth Russian">
+        </div>
+        <div class="form-group">
+          <label>Type (Biology)</label>
+          <input type="text" id="biologyType" placeholder="Angiosperm / Gymnosperm / Fern...">
+        </div>
+        <div class="form-group">
+          <label>Type (Design)</label>
+          <input type="text" id="designType" placeholder="Tree / Shrub / Climber...">
+        </div>
+        <div class="form-group">
+          <label>Flowering</label>
+          <input type="text" id="flowering" placeholder="Flowering / Non-flowering">
+        </div>
+        <div class="form-group">
+          <label>Flowering Cycle</label>
+          <input type="text" id="floweringCycle" placeholder="Spring / Summer / Year-round">
+        </div>
+        <div class="form-group">
+          <label>Best Vendor</label>
+          <input type="text" id="vendor" placeholder="e.g., Burpee, Monrovia">
+        </div>
+        <div class="form-group">
+          <label>Benefits/Uses</label>
+          <input type="text" id="benefitsUses" placeholder="Air purifying, medicinal, ornamental...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Form Description</label>
+        <textarea id="formDesc" placeholder="1-2 sentence description of the plant's appearance..."></textarea>
+      </div>
+    </div>
+
+    <!-- Vaastu & Care Card -->
+    <div class="card">
+      <div class="form-section-title">
+        <i class="fas fa-home"></i> Vaastu & Care Information
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Vaastu Compliance</label>
+          <input type="text" id="vaastuCompliance" placeholder="Yes / No / Direction">
+        </div>
+        <div class="form-group">
+          <label>Vaastu Description</label>
+          <input type="text" id="vaastuDescription" placeholder="Place in North-East for prosperity...">
+        </div>
+        <div class="form-group">
+          <label>Care Intensity (rating)</label>
+          <input type="text" id="careIntensity" placeholder="Easy / Medium / Hard or 1-5">
+        </div>
+        <div class="form-group">
+          <label>Care Intensity (Days)</label>
+          <input type="text" id="careIntensityDays" placeholder="e.g., 7">
+        </div>
+        <div class="form-group">
+          <label>Humidity Required</label>
+          <input type="text" id="humidityRequired" placeholder="Low / Medium / High">
+        </div>
+        <div class="form-group">
+          <label>Mist Frequency</label>
+          <input type="text" id="mistFrequency" placeholder="Daily / Weekly / None">
+        </div>
+        <div class="form-group">
+          <label>Water Amount</label>
+          <input type="text" id="waterAmount" placeholder="Moderate / 1 cup / Keep moist">
+        </div>
+        <div class="form-group">
+          <label>Water Frequency</label>
+          <input type="text" id="waterFrequency" placeholder="Every 2 days / Weekly">
+        </div>
+        <div class="form-group">
+          <label>Sunlight Needed</label>
+          <input type="text" id="sunlightNeeded" placeholder="Full sun / Partial shade / Indirect bright">
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div style="text-align: center; margin-top: 10px;">
+      <button id="submitBtn" class="btn btn-primary btn-block" onclick="submitPlant()">
+        <i class="fas fa-paper-plane"></i> Submit to Wishlist
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toastContainer"></div>
+
+  <script>
+    // ---------- Helpers ----------
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i> ${message}`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 4000);
+    }
+
+    // Load auto IDs on startup
+    window.addEventListener('load', () => {
+      google.script.run
+        .withSuccessHandler(ids => {
+          document.getElementById('srNo').value = ids.srNo;
+          document.getElementById('plantId').value = ids.id;
+        })
+        .getNextIdentifiers();
+    });
+
+    // Image preview logic
+    const imageUrlInput = document.getElementById('imageUrl');
+    const imagePreview = document.getElementById('imagePreview');
+    const noImagePlaceholder = document.getElementById('noImagePlaceholder');
+
+    imageUrlInput.addEventListener('input', function() {
+      const url = this.value.trim();
+      if (url && (url.startsWith('http://') || url.startsWith('https://'))) {
+        imagePreview.src = url;
+        imagePreview.style.display = 'block';
+        noImagePlaceholder.style.display = 'none';
+        imagePreview.onerror = () => {
+          imagePreview.style.display = 'none';
+          noImagePlaceholder.style.display = 'flex';
+        };
+      } else {
+        imagePreview.style.display = 'none';
+        noImagePlaceholder.style.display = 'flex';
+      }
+    });
+
+    // AI Autofill
+    function fillWithAI() {
+      const name = document.getElementById('commonName').value.trim();
+      if (!name) {
+        showToast('Please enter a plant common name first.', 'error');
+        return;
+      }
+
+      const btn = document.getElementById('fillBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Generating...';
+
+      google.script.run
+        .withSuccessHandler(details => {
+          // Fill all fields - mapping to IDs
+          document.getElementById('scientificName').value = details.scientificName || '';
+          document.getElementById('variety').value = details.variety || '';
+          document.getElementById('biologyType').value = details.biologyType || '';
+          document.getElementById('designType').value = details.designType || '';
+          document.getElementById('flowering').value = details.flowering || '';
+          document.getElementById('floweringCycle').value = details.floweringCycle || '';
+          document.getElementById('vendor').value = details.vendor || '';
+          document.getElementById('benefitsUses').value = details.benefitsUses || '';
+          document.getElementById('formDesc').value = details.formDesc || '';
+          document.getElementById('vaastuCompliance').value = details.vaastuCompliance || '';
+          document.getElementById('vaastuDescription').value = details.vaastuDescription || '';
+          document.getElementById('careIntensity').value = details.careIntensity || '';
+          document.getElementById('careIntensityDays').value = details.careIntensityDays || '';
+          document.getElementById('humidityRequired').value = details.humidityRequired || '';
+          document.getElementById('mistFrequency').value = details.mistFrequency || '';
+          document.getElementById('waterAmount').value = details.waterAmount || '';
+          document.getElementById('waterFrequency').value = details.waterFrequency || '';
+          document.getElementById('sunlightNeeded').value = details.sunlightNeeded || '';
+          document.getElementById('imageUrl').value = details.image || '';
+
+          // Trigger image preview update
+          imageUrlInput.dispatchEvent(new Event('input'));
+
+          showToast('✨ AI data loaded successfully!', 'success');
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-magic"></i> Autofill with AI';
+        })
+        .withFailureHandler(err => {
+          showToast('❌ ' + err.message, 'error');
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-magic"></i> Autofill with AI';
+        })
+        .getPlantDetails(name);
+    }
+
+    // Submit form
+    function submitPlant() {
+      const commonName = document.getElementById('commonName').value.trim();
+      if (!commonName) {
+        showToast('Plant common name is required.', 'error');
+        return;
+      }
+
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span> Saving...';
+
+      const formData = {
+        'Sr. No.': document.getElementById('srNo').value,
+        'ID': document.getElementById('plantId').value,
+        'Image': document.getElementById('imageUrl').value,
+        'Plant Common Name': commonName,
+        'Scientific Name': document.getElementById('scientificName').value,
+        'Variety': document.getElementById('variety').value,
+        'Best Vendor': document.getElementById('vendor').value,
+        'Type of Plant (Biology)': document.getElementById('biologyType').value,
+        'Type of Plant (Design)': document.getElementById('designType').value,
+        'Form Description': document.getElementById('formDesc').value,
+        'Flowering': document.getElementById('flowering').value,
+        'Benefits/Uses': document.getElementById('benefitsUses').value,
+        'Vaastu Compliance': document.getElementById('vaastuCompliance').value,
+        'Vaastu Description': document.getElementById('vaastuDescription').value,
+        'Care Intensity(e/m/h or rating)': document.getElementById('careIntensity').value,
+        'Flowering Cycle': document.getElementById('floweringCycle').value,
+        'Care Intensity(In Days)': document.getElementById('careIntensityDays').value,
+        'Humidity Required': document.getElementById('humidityRequired').value,
+        'Mist Frequency': document.getElementById('mistFrequency').value,
+        'Water Amount': document.getElementById('waterAmount').value,
+        'Water Frequency': document.getElementById('waterFrequency').value,
+        'SunLight Needed': document.getElementById('sunlightNeeded').value
+      };
+
+      google.script.run
+        .withSuccessHandler(msg => {
+          showToast('✅ ' + msg, 'success');
+          // Reset form except IDs
+          document.getElementById('commonName').value = '';
+          document.querySelectorAll('input:not([readonly]):not([type="url"]), textarea').forEach(el => el.value = '');
+          document.getElementById('imageUrl').value = '';
+          imagePreview.style.display = 'none';
+          noImagePlaceholder.style.display = 'flex';
+          // Refresh IDs
+          google.script.run.withSuccessHandler(ids => {
+            document.getElementById('srNo').value = ids.srNo;
+            document.getElementById('plantId').value = ids.id;
+          }).getNextIdentifiers();
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit to Wishlist';
+        })
+        .withFailureHandler(err => {
+          showToast('❌ ' + err.message, 'error');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit to Wishlist';
+        })
+        .submitPlant(formData);
+    }
+  </script>
+</body>
+</html>

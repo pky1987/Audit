@@ -125,5 +125,12 @@ find 29112025/Airis/smart_surveillance -name "*.py" -not -path "*/venv/*" -exec 
 ```
 https://script.google.com/macros/s/AKfycbytSTMKzq7cywvrgphbLUwQ50C1QkWfaMf_1FtbcY_js7Ku8d1-XZXNriIHF_D4_4CG/exec
 ```
+```
 grep -n "def " lib/elx/real_time_translation.ex
+```
+```
+set DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test_db && set NODE_ENV=test && npm run test:coverage
+```
+```
+set DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test_db && set NODE_ENV=test && npx jest src/tests/notifications.test.ts --coverage
 ```

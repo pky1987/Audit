@@ -134,3 +134,6 @@ set DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test_db && set NO
 ```
 set DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test_db && set NODE_ENV=test && npx jest src/tests/notifications.test.ts --coverage
 ```
+```
+npm view @sentry/nextjs versions --json
+```

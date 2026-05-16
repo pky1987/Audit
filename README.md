@@ -137,3 +137,7 @@ set DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test_db && set NO
 ```
 npm view @sentry/nextjs versions --json
 ```
+
+```
+ git restore --staged backend/src/scripts/seedAncillary.ts
+```

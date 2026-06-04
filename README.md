@@ -141,3 +141,8 @@ npm view @sentry/nextjs versions --json
 ```
  git restore --staged backend/src/scripts/seedAncillary.ts
 ```
+
+```
+wsl -d Ubuntu bash -c "cd /tmp && rm -rf _sync_clean && git clone https://github.com/pky1987/pravaallp_crm.git _sync_clean && cd _sync_clean && /home/prakash/.local/bin/git-filter-repo --invert-paths --path DEVELOPER_QUICK_REFERENCE.md --path FEATURE_ROADMAP.md --path PHASE_1_2_3_COMPLETION.md --path PHASE_2_COMPLETION.md --path PROJECT_STATUS.md --path CLAUDE.md --path DEPLOY.md --path deploy.md --path PRISMA_SYNC_SETUP.md --path prisma_sync_setup.md --path vercel.json --path supabase-export && git remote add mirror https://github.com/pravaallp/pravaa_crm.git && git push mirror --force --all && git push mirror --force --tags && cd /tmp && rm -rf _sync_clean && echo DONE"
+
+```

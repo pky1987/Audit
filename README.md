@@ -178,6 +178,10 @@ wsl -d Ubuntu bash -c "cd /tmp/_sync_clean && git remote add mirror https://gith
 wsl -d Ubuntu bash -c "rm -rf /tmp/_sync_clean && echo 'Cleanup done'"
 ```
 
+# Git changes from previous commit
+```
+git diff --stat -- crm/pages/MasterSites.tsx && echo "---" && git diff -- crm/pages/MasterSites.tsx
+```
 
 
 

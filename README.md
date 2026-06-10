@@ -183,7 +183,13 @@ wsl -d Ubuntu bash -c "rm -rf /tmp/_sync_clean && echo 'Cleanup done'"
 git diff --stat -- crm/pages/MasterSites.tsx && echo "---" && git diff -- crm/pages/MasterSites.tsx
 ```
 
+```
+git stash -u -m "wip: footer/roi mailto + gitignore before filter-repo"
 
+```
+```
+wsl -d Ubuntu bash -c "cd /mnt/c/Users/ASUS/Projects/safe-accommodation && /home/prakash/.local/bin/git-filter-repo --invert-paths --path dev.log --force"
+```
 
 
 

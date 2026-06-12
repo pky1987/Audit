@@ -190,7 +190,9 @@ git stash -u -m "wip: footer/roi mailto + gitignore before filter-repo"
 ```
 wsl -d Ubuntu bash -c "cd /mnt/c/Users/ASUS/Projects/safe-accommodation && /home/prakash/.local/bin/git-filter-repo --invert-paths --path dev.log --force"
 ```
-
+```
+wsl -e bash -lc "cd /home/prakash/pravaa_crm/crm && npx eslint pages/ToolsGuides.tsx --format json | node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const r=JSON.parse(d);let e=0,w=0;r.forEach(f=>f.messages.forEach(m=>{console.log(m.line+':'+m.column+' '+m.ruleId+' '+m.message.split('\\n')[0]);if(m.severity===2)e++;else w++}));console.log('TOTAL errors:'+e+' warnings:'+w)})\""
+```
 
 
 

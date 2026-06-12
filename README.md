@@ -194,6 +194,10 @@ wsl -d Ubuntu bash -c "cd /mnt/c/Users/ASUS/Projects/safe-accommodation && /home
 wsl -e bash -lc "cd /home/prakash/pravaa_crm/crm && npx eslint pages/ToolsGuides.tsx --format json | node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const r=JSON.parse(d);let e=0,w=0;r.forEach(f=>f.messages.forEach(m=>{console.log(m.line+':'+m.column+' '+m.ruleId+' '+m.message.split('\\n')[0]);if(m.severity===2)e++;else w++}));console.log('TOTAL errors:'+e+' warnings:'+w)})\""
 ```
 
+```
+wsl -e bash -lc "cd /home/prakash/pravaa_crm/crm && npx eslint . --format json 2>/dev/null | node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const r=JSON.parse(d);let e=0,w=0;for(const f of r){for(const m of f.messages){console.log(f.filePath.split('/crm/')[1]+':'+m.line+':'+m.column+' '+m.ruleId+' '+m.message.split('\\\\n')[0]);if(m.severity===2)e++;else w++;}}console.log('TOTAL errors:'+e+' warnings:'+w);});\""
+```
+
 
 
 

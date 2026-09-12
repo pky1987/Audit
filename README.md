@@ -214,9 +214,10 @@ wsl.exe -d Ubuntu -- bash -c 'source ~/.nvm/nvm.sh >/dev/null; cd ~/honeychain &
 
 ```
 
+```
+pkill -f "ignite chain serve"; pkill -f "honeychaind start"; pkill -f "next dev"
 
-
-
+```
 
 
 

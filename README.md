@@ -210,6 +210,11 @@ git config core.autocrlf false
 ```
 
 ```
+git -c safe.directory=* push --force-with-lease=main:9763fc7 origin 3b5ad95:main
+```
+
+
+```
 wsl.exe -d Ubuntu -- bash -c 'source ~/.nvm/nvm.sh >/dev/null; cd ~/honeychain && node -v && npx --yes create-next-app@latest frontend --ts --eslint --app --src-dir --no-tailwind --import-alias "@/*" --use-npm --yes 2>&1 | tail -15; ls frontend; cat frontend/package.json | head -30'
 
 ```

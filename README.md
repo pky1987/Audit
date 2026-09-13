@@ -231,4 +231,29 @@ pkill -f "ignite chain serve"; pkill -f "honeychaind start"; pkill -f "next dev"
 ```
 MSYS_NO_PATHCONV=1 wsl.exe -d Ubuntu -- bash -lc "cd ~/honeychain && git rm --cached -q cosmos.md && git add .gitignore && git -c user.name='Prakash Yadav' -c user.email='py430896@gmail.com' commit -q --amend -F /tmp/hc-commit-msg.txt && echo '--- in commit?' && (git ls-tree -r HEAD --name-only | grep -x cosmos.md || echo 'cosmos.md NOT in commit') && echo '--- on disk?' && ls -la cosmos.md && echo '--- status:' && git status --short && echo '--- demo files still committed:' && git ls-tree -r HEAD --name-only | grep -E 'demo' && git log --oneline -3"
 ```
+# Private repo connect with server
 
+```
+ssh-keygen -t ed25519 -C "revora-server" -f ~/.ssh/id_ed25519 -N ""
+
+```
+```
+cat ~/.ssh/id_ed25519.pub
+
+```
+
+```
+ssh -T git@github.com
+
+```
+
+```
+git remote set-url origin git@github.com:pky1987/revora.git
+git remote -v
+
+```
+
+`git pull origin main
+``
+
+```

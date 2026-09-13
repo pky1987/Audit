@@ -220,6 +220,10 @@ wsl.exe -d Ubuntu -- bash -c 'source ~/.nvm/nvm.sh >/dev/null; cd ~/honeychain &
 ```
 
 ```
+MSYS_NO_PATHCONV=1 wsl.exe -d Ubuntu -- bash -lc "cd ~/honeychain && git reset --soft 3b5ad95 && echo '--- now at:' && git log --oneline -3 && echo '--- staged files:' && git diff --cached --name-only | wc -l && echo '--- Co-Authored lines left in history:' && (git log --format='%h %s%n%b' | grep -i -B3 'co-authored' || echo 'none') && echo '--- authors:' && git log --format='%h %an <%ae>'"
+```
+
+```
 pkill -f "ignite chain serve"; pkill -f "honeychaind start"; pkill -f "next dev"
 
 ```

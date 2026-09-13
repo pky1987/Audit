@@ -252,8 +252,7 @@ git remote set-url origin git@github.com:pky1987/revora.git
 git remote -v
 
 ```
-
-`git pull origin main
-``
+```
+git pull origin main
 
 ```

@@ -237,6 +237,18 @@ MSYS_NO_PATHCONV=1 wsl.exe -d Ubuntu -- bash -lc "cd ~/honeychain && git rm --ca
 ssh-keygen -t ed25519 -C "revora-server" -f ~/.ssh/id_ed25519 -N ""
 
 ```
+
+
+```
+cat > $S/install_tools.sh <<'EOF'
+set -euo pipefail
+export GOROOT="$HOME/.local/go" GOPATH="$HOME/go"; export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
+go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
+go install golang.org/x/vuln/cmd/govulncheck@latest
+go install github.com/bufbuild/buf/cmd/buf@latest
+golangci-lint version | head -1; buf --version; govulncheck -version 2>/dev/null | head -3 || true
+EOF
+```
 ```
 cat ~/.ssh/id_ed25519.pub
 

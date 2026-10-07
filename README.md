@@ -248,6 +248,19 @@ ssh -T git@github.com
 ```
 
 ```
+# 1. on your laptop
+ssh-keygen -t ed25519 -f C:\Users\MSi\.ssh\oracle_matrix -C "prakash-matrix"
+type C:\Users\MSi\.ssh\oracle_matrix.pub
+
+```
+
+```
+# 2. in your open server session - ADD, don't replace
+nano ~/.ssh/authorized_keys
+
+```
+
+```
 git remote set-url origin git@github.com:pky1987/revora.git
 git remote -v
 

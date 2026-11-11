@@ -21,6 +21,12 @@ git push -u origin main --force
 ```
 git config --global user.email
 ```
+```
+gh auth login
+gh repo create pky1987/safe-os-backup --private
+git push backup main
+
+```
 # Remove deleted file history from Github
 
 1. Select files which need to be deleted.

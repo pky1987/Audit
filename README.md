@@ -290,4 +290,6 @@ go install github.com/bufbuild/buf/cmd/buf@latest
 golangci-lint version | head -1; buf --version; govulncheck -version 2>/dev/null | head -3 || true
 EOF
 ```
-
+```
+cd /c/Users/MSi/Documents/PChat; sed -n 300,360p PROGRESS.md; grep -rln "PChatProtect" --include=*.js --include=*.html --include=*.ex --include=*.json . 2>/dev/null | grep -v node_modules | head -20
+```

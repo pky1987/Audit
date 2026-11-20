@@ -27,6 +27,10 @@ gh repo create pky1987/safe-os-backup --private
 git push backup main
 
 ```
+```
+cd ~/prust
+cargo test --release --lib -- --skip DIRECTIONAL_ONLY
+```
 # Remove deleted file history from Github
 
 1. Select files which need to be deleted.

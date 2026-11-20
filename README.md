@@ -296,9 +296,10 @@ cd /c/Users/MSi/Documents/PChat; sed -n 300,360p PROGRESS.md; grep -rln "PChatPr
 ```
 ps -eo pid,etime,args | grep -E 'deps/prust' | grep -v grep | cut -c1-100
 ```
-
-
-
+```
+pstree -ap 1889
+ps -ef --forest | grep -E 'cargo|rustc|cmake|make|ninja|rsync' | grep -v grep
+```
 
 
 

@@ -293,3 +293,22 @@ EOF
 ```
 cd /c/Users/MSi/Documents/PChat; sed -n 300,360p PROGRESS.md; grep -rln "PChatProtect" --include=*.js --include=*.html --include=*.ex --include=*.json . 2>/dev/null | grep -v node_modules | head -20
 ```
+```
+ps -eo pid,etime,args | grep -E 'deps/prust' | grep -v grep | cut -c1-100
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
